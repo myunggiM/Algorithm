@@ -1,4 +1,4 @@
-package basic;
+package ¼öÇĞ1_basic;
 
 import java.io.*;
 import java.util.*;

@@ -1,4 +1,4 @@
-package basic;
+package 수학1_basic;
 
 public class 골드바흐의추측_6588 {
 
