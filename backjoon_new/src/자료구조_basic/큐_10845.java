@@ -23,7 +23,7 @@ public class ť_10845 {
 					else sb.append(q.poll()+"\n");
 					break;
 				case "size":
-					sb.append(q.size()+"\n");
+					sb.append(q.size()+"\n"); 
 					break;
 				case "empty":
 					if(q.isEmpty()) sb.append("1\n");
