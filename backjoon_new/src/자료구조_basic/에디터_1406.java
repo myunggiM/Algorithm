@@ -1,63 +1,60 @@
 package 자료구조_basic;
-import java.io.*;
-import java.util.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Stack;
 
 public class 에디터_1406 {
+
 	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		Stack stL = new Stack<>();
+		Stack stR = new Stack<>();
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		
 		String str = br.readLine();
-		int M = Integer.parseInt(br.readLine());
-
-		LinkedList<Character> list = new LinkedList<Character>();
-
-		for(int i = 0; i < str.length(); i++) {
-			list.add(str.charAt(i));
+		for (int i = 0; i < str.length(); i++) {
+			stL.push(str.charAt(i));
 		}
 
-		//iterator 메소드 호출 
-		ListIterator<Character> iter = list.listIterator();
-		//처음 커서는 문장의 맨 뒤에 있어야하기 때문에 커서를 맨뒤로 이동시켜줌 (ex. abc|)
-		while(iter.hasNext()) {
-			iter.next();
-		}
-	
-		for(int i = 0; i < M; i++) {
-			String command = br.readLine();
-			char c = command.charAt(0);
-			switch(c) {
-			case 'L':
-				if(iter.hasPrevious())
-					iter.previous();
+		int n = Integer.parseInt(br.readLine());
 
-				break;
-			case 'D':
-				if(iter.hasNext())
-					iter.next();
-
-				break;
-			case 'B':
-				//remove()는 next()나 previous()에 의해 반환된 가장 마지막 요소를 리스트에서 제거함
-				if(iter.hasPrevious()) {
-					iter.previous();
-					iter.remove();
+		for (int i = 0; i < n; i++) {
+			String com = br.readLine();
+			if (com.equals("L")) {
+				if (!stL.empty()) {
+					stR.push(stL.pop());
 				}
-				break;
-			case 'P':
-				char t = command.charAt(2);
-				iter.add(t);
+			} else if (com.equals("D")) {
+				if (!stR.empty()) {
+					stL.push(stR.pop());
 
-				break;
-			default:
-				break;
+				}
+			} else if (com.equals("B")) {
+				if (!stL.empty()) {
+					stL.pop();
+				}
+			} else if (com.contains("P")) {
+				char c = com.charAt(2);
+				stL.push(c);
 			}
+
 		}
-		for(Character chr : list) {
-			bw.write(chr);
+
+		while (!stL.empty()) {
+			stR.push(stL.pop());
 		}
-		
+
+		while (!stR.empty()) {
+			bw.write(stR.pop().toString());
+		}
 		bw.flush();
-		bw.close(); 
+		bw.close();
+
 	}
+
 }
