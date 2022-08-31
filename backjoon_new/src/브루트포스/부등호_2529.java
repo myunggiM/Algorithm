@@ -4,12 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.StringTokenizer;
 
 public class 부등호_2529 {
 	static int k;
 	static int num[]; 
-	static char ch[]; 
+	static String ch[]; 
 	static long MAX =Long.MIN_VALUE;
 	static long MIN =Long.MAX_VALUE;
 	static String max=new String();
@@ -18,14 +17,8 @@ public class 부등호_2529 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		k =Integer.parseInt(br.readLine());
-		ch =new char[k];
 		num =new int[k+1];
-		// 입력
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		for (int i = 0; i < k; i++) {
-			ch[i]= st.nextToken().charAt(0);
-		}
-		
+		ch= br.readLine().split(" ");
 		//dfs
 		for (int i = 0; i < 10; i++) {
 			num[0]=i;
@@ -52,7 +45,7 @@ public class 부등호_2529 {
 		// 조건부합시 dfs 타기
 		for (int j = 0; j < 10; j++) {
 			if (v[j]) continue;		
-			if ((ch[val-1]=='<' && i < j) || (ch[val-1]=='>' && i > j)) {
+			if ((ch[val-1].equals("<") && i < j) || (ch[val-1].equals(">") && i > j)) {
 				num[val] =j;
 				v[j]=true;
 				dfs(val+1,j);
