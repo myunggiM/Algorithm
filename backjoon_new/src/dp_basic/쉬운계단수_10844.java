@@ -24,8 +24,9 @@ public class 쉬운계단수_10844 {
 				// 9일 경우 이전 자릿수의 8로 시작하는 수의 개수와 동일
 				if(j==9) {
 					dp[i][9]=dp[i-1][8];
+				}else {
+					dp[i][j]=(dp[i-1][j-1] % MOD +dp[i-1][j+1] % MOD) % MOD;
 				}
-				dp[i][j]=(dp[i-1][j-1] % MOD +dp[i-1][j+1] % MOD) % MOD;
 			}
 		 }
 		 
