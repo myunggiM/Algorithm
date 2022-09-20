@@ -12,9 +12,17 @@ public class 시뮬레이션 {
 	public static boolean inRange(int x, int y) {
         return (0 <= x && x < n && 0 <= y && y < n);
     }
-	
-	public static void main(String[] args) throws IOException{
-		
-	}
-	
+	static int getDir(char ch){
+        int d=0;
+        if(ch=='E'){
+            d=0;
+        }else if(ch=='S'){
+            d=1;
+        }else if(ch=='W'){
+            d=2;
+        }else{
+            d=3;
+        }
+        return d;
+    }
 }
