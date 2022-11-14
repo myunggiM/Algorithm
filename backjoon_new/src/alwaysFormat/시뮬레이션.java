@@ -3,6 +3,15 @@ package alwaysFormat;
 import java.io.*;
 import java.util.*;
 
+class Pair{
+    int x;
+    int y;
+    public  Pair(int x, int y){
+        this.x =x;
+        this.y= y;
+    }
+}
+
 public class ½Ã¹Ä·¹ÀÌ¼Ç {
 	static int n=100;
 	
